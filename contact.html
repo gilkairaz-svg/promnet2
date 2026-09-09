@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+
+    <style>
+      td.label {
+        text-align: right;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contact Me</h1>
+
+    <nav>
+      <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="project.html">Project</a> | <a href="contact.html">Contact</a>
+    </nav>
+    <hr />
+
+    <h2>Informasi Kontak</h2>
+    <p>
+      Jika Anda ingin berdiskusi atau bekerja sama, silakan hubungi saya melalui form berikut.<br />
+      Anda juga dapat mengirim email ke <a href="mailto:razbanikay@gmail.com">razbanikay@gmail.com</a>.
+    </p>
+
+    <h2>Form Pesan</h2>
+    <form>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+          <th colspan="2">Form Data Kontak</th>
+        </tr>
+        <tr>
+          <td class="label">Nama Lengkap:</td>
+          <td><input type="text" name="nama" /></td>
+        </tr>
+        <tr>
+          <td class="label">Email:</td>
+          <td><input type="email" name="email" /></td>
+        </tr>
+        <tr>
+          <td class="label">Nomor Telepon:</td>
+          <td><input type="tel" name="telepon" /></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin:</td>
+          <td>
+            <input type="radio" name="jenis_kelamin" value="Laki-laki" /> Laki-laki
+            <input type="radio" name="jenis_kelamin" value="Perempuan" /> Perempuan
+          </td>
+        </tr>
+        <tr>
+          <td class="label">Tanggal Lahir:</td>
+          <td><input type="date" name="tanggal_lahir" /></td>
+        </tr>
+        <tr>
+          <td class="label">Topik Pesan:</td>
+          <td>
+            <select name="topik">
+              <option value="Diskusi">Diskusi</option>
+              <option value="Kerjasama">Kerjasama</option>
+              <option value="Kritik dan Saran">Kritik dan Saran</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Pesan:</td>
+          <td>
+            <input type="radio" name="jenis_pesan" value="Pertanyaan" /> Pertanyaan
+            <input type="radio" name="jenis_pesan" value="Saran" /> Saran
+            <input type="radio" name="jenis_pesan" value="Lainnya" /> Lainnya
+          </td>
+        </tr>
+        <tr>
+          <td class="label">Pesan:</td>
+          <td><textarea name="pesan" rows="5" cols="40" required></textarea></td>
+        </tr>
+        <tr>
+          <td class="label">Salinan Pesan:</td>
+          <td><input type="checkbox" name="salinan" /> Kirim salinan pesan ke email saya</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center">
+            <input type="submit" value="Kirim Pesan" />
+            <input type="reset" value="Reset" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <p><i>Catatan: karena website ini hanya menggunakan HTML, form belum terhubung ke server/database.</i></p>
+
+    <hr />
+    <p><a href="index.html">Kembali ke Home</a></p>
+    <p>&copy; 2026 Khaila Razbani.</p>
+  </body>
+</html>
