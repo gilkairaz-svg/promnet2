@@ -1,0 +1,416 @@
+/* ==========================================================================
+   Khaila Razbani — Personal Website
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+
+:root{
+  /* palette – hitam putih / grayscale, selaras dengan referensi */
+  --ink:        #131211;   /* teks utama & judul besar */
+  --ink-soft:   #4a4846;   /* teks sekunder */
+  --muted:      #8f8c88;   /* label, pemisah nav, aksen bintang */
+  --line:       #d8d5d0;   /* garis tipis / border */
+  --paper:      #f2f0ec;   /* kartu halaman (terang) */
+  --paper-2:    #e8e5df;   /* baris zebra / bidang lembut */
+  --canvas:     #0b0b0a;   /* latar luar (gelap, seperti sampul PDF) */
+  --canvas-2:   #201f1d;
+
+  /* tipografi */
+  --font-display: "Sora", "Segoe UI", Arial, sans-serif;
+  --font-body:    "Inter", "Segoe UI", Arial, sans-serif;
+
+  /* layout */
+  --pad: 64px;
+  --radius: 28px;
+  --max: 1180px;
+}
+
+/* ---------- reset dasar ---------- */
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{
+  background:
+    radial-gradient(1200px 700px at 85% -10%, #2a2926 0%, transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, #232220 0%, transparent 55%),
+    var(--canvas);
+  min-height: 100%;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  max-width: var(--max);
+  margin: 48px auto;
+  padding: 0 var(--pad) 56px;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+
+  border-radius: var(--radius);
+  box-shadow: 0 40px 90px -20px rgba(0,0,0,.65), 0 1px 0 rgba(255,255,255,.4) inset;
+  position: relative;
+}
+
+::selection{ background: var(--ink); color: var(--paper); }
+
+/* ---------- urutan visual: nav lalu judul (tanpa mengubah HTML) ---------- */
+body > nav{ order: -2; }
+body > h1{ order: -1; }
+
+/* ==========================================================================
+   NAV
+   ========================================================================== */
+body > nav{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 22px;
+
+  padding-top: 40px;
+  padding-bottom: 22px;
+
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted); /* mewarnai karakter pemisah "|" jadi tipis/elegan */
+}
+
+body > nav a{
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+body > nav a:hover,
+body > nav a:focus-visible{
+  border-bottom-color: var(--ink);
+}
+
+/* ==========================================================================
+   JUDUL & HEADING
+   ========================================================================== */
+h1, h2, h3{
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -.01em;
+}
+
+body > h1{
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-size: clamp(2.2rem, 5.6vw, 3.6rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  padding-top: 6px;
+  margin: 0 0 4px;
+}
+
+/* aksen bintang kecil, echo dari motif "✳" pada referensi */
+body > h1::before{
+  content: "✳";
+  font-size: .34em;
+  font-weight: 400;
+  color: var(--muted);
+  transform: translateY(-4px);
+}
+
+h2{
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  text-transform: uppercase;
+  margin: 40px 0 14px;
+}
+
+h3{
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: none;
+  margin: 26px 0 8px;
+}
+
+/* judul pertama tepat sesudah hr agar rapat pada pembuka seksi */
+hr + h2{ margin-top: 8px; }
+
+/* ==========================================================================
+   PARAGRAF, TEKS & TAUTAN
+   ========================================================================== */
+p{
+  max-width: 68ch;
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+}
+
+/* paragraf pembuka tepat di bawah h1 (mis. index.html) tampil sedikit lebih tenang */
+body > h1 + p{
+  order: -1;
+  color: var(--muted);
+  font-size: .95rem;
+  margin-top: -6px;
+}
+
+a{ color: var(--ink); }
+a:hover{ color: var(--ink-soft); }
+
+b, strong{ color: var(--ink); font-weight: 700; }
+
+i, em{ color: var(--ink-soft); }
+
+/* catatan kecil beritalic (mis. keterangan form belum terhubung server) */
+body > p > i,
+body > p > em{
+  display: inline-block;
+  font-size: .9rem;
+}
+
+/* ==========================================================================
+   GARIS PEMBATAS — full-bleed, meniru garis grid tipis pada referensi
+   ========================================================================== */
+body > hr{
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line) 8%, var(--line) 92%, transparent);
+  margin: 34px calc(-1 * var(--pad));
+}
+
+body > hr:last-of-type{ margin-bottom: 26px; }
+
+/* ==========================================================================
+   DAFTAR (UL / OL)
+   ========================================================================== */
+ul, ol{
+  margin: 0 0 20px;
+  padding-left: 0;
+  list-style: none;
+  color: var(--ink-soft);
+}
+
+ul > li, ol > li{
+  position: relative;
+  padding: 9px 0 9px 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+ul > li:first-child, ol > li:first-child{ border-top: 1px solid var(--line); }
+
+ul > li::before{
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 19px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+ol{ counter-reset: step; }
+ol > li{ counter-increment: step; }
+ol > li::before{
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 9px;
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   GAMBAR / FIGURE
+   ========================================================================== */
+figure{
+  margin: 22px 0;
+  max-width: 100%;
+}
+
+figure img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px -18px rgba(0,0,0,.45);
+  background: var(--paper-2);
+}
+
+/* foto profil (index.html) ditampilkan bundar & lebih intim */
+figure:has(img[alt="Foto Profil"]) img{
+  border-radius: 50%;
+  width: 168px;
+  height: 168px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+figcaption{
+  margin-top: 10px;
+  font-size: .82rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   TABEL — data diri, ringkasan project, & tabel form kontak
+   ========================================================================== */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 26px;
+  font-size: .95rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+
+  /* memungkinkan scroll horizontal di layar kecil tanpa mengubah HTML */
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table > tr, table tbody{ display: table; width: 100%; table-layout: auto; }
+
+th, td{
+  padding: 13px 16px;
+  text-align: left;
+  border: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+th{
+  font-family: var(--font-display);
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+tr:nth-child(even) td{ background: rgba(0,0,0,.015); }
+
+td.label{
+  color: var(--ink-soft);
+  font-weight: 600;
+  background: var(--paper-2);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   FORM (contact.html)
+   ========================================================================== */
+form{ margin: 6px 0 22px; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea{
+  width: 100%;
+  max-width: 420px;
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+textarea{ max-width: 100%; resize: vertical; }
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(19,18,17,.1);
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+  accent-color: var(--ink);
+  margin-right: 6px;
+  transform: translateY(2px);
+}
+
+input[type="submit"],
+input[type="reset"]{
+  font-family: var(--font-display);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+input[type="submit"]{
+  background: var(--ink);
+  color: var(--paper);
+}
+
+input[type="reset"]{
+  background: transparent;
+  color: var(--ink);
+  margin-left: 10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover{ opacity: .8; }
+
+input[type="submit"]:active,
+input[type="reset"]:active{ transform: scale(.97); }
+
+/* ==========================================================================
+   FOOTER (copyright & tautan penutup) — selalu elemen terakhir pada body
+   ========================================================================== */
+body > p:last-child{
+  max-width: none;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+/* paragraf tautan tepat sebelum copyright (mis. "Kembali ke Home") */
+body > p:last-child:not(:first-child) + p{ }
+body > hr:last-of-type ~ p:not(:last-child){
+  text-align: center;
+  font-size: .92rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 860px){
+  :root{ --pad: 34px; --radius: 20px; }
+  body{ margin: 24px auto; }
+}
+
+@media (max-width: 560px){
+  :root{ --pad: 20px; --radius: 0; }
+  body{
+    margin: 0 auto;
+    box-shadow: none;
+  }
+  body > h1{ gap: 10px; }
+  input[type="reset"]{ margin-left: 0; display: block; margin-top: 10px; }
+}
